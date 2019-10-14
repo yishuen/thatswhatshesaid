@@ -11,5 +11,4 @@ app.layout = html.Div(children=[
     html.H1('welcome!', style={'color': 'red', 'font-family': 'verdana', 'textAlign': 'center'}),
     dcc.Link('to the classifier!!', href='/model', style={'color': 'red', 'font-family': 'verdana', 'textAlign': 'center'}),
 
-
 ])
