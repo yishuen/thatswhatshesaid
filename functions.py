@@ -26,13 +26,13 @@ def preprocess(data):
     lemmatized = [lemmadata(post) for post in data]
 
     # picked tfidf vectorizer
-    tfidf = pickle.load(open("pickles/tfidf.pkl", "rb"))
+    tfidf = pickle.load(open("dash_package/pickles/tfidf.pkl", "rb"))
 
     transformed = tfidf.transform(lemmatized)
     tfidf_df = pd.DataFrame(transformed.toarray(), columns=tfidf.get_feature_names())
 
     # pickled the list of relevant words
-    relevant = pickle.load(open("pickles/relevantwords.pkl", "rb"))
+    relevant = pickle.load(open("dash_package/pickles/relevantwords.pkl", "rb"))
 
     testset = [tfidf_df[word] for word in relevant if word in tfidf_df.columns]
 
@@ -41,7 +41,7 @@ def preprocess(data):
 
 def classify_text(text):
     # the model
-    mnb = pickle.load(open("pickles/mnb.pkl", "rb"))
+    mnb = pickle.load(open("dash_package/pickles/mnb.pkl", "rb"))
     listtext = [text]
     processed = preprocess(listtext)
     result = mnb.predict(processed)[0]
