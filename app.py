@@ -17,3 +17,6 @@ def predict():
         return render_template('nope.html', variable = text)
     if prediction == 1:
         return render_template('twss.html', variable = text)
+
+if __name__ == '__main__':
+    app.run()
