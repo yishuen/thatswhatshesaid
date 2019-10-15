@@ -5,11 +5,11 @@ from functions import *
 app = Flask(__name__)
 app.config['DEBUG'] = True
 
-@app.route('/model', methods = ['GET'])
-def render_html():
+@app.route('/', methods = ['GET'])
+def render_classifier():
     return render_template('classifier.html')
 
-@app.route('/model', methods = ['POST'])
+@app.route('/', methods = ['POST'])
 def predict():
     text = request.form.get('text')
     prediction = classify_text(text)
